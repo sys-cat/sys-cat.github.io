@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Blog | System with Cat]]></title>
-  <link href="http://sys-cat.github.io/blog/categories/blog/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Tips | System with Cat]]></title>
+  <link href="http://sys-cat.github.io/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://sys-cat.github.io/"/>
   <updated>2015-12-08T20:17:33+09:00</updated>
   <id>http://sys-cat.github.io/</id>
@@ -150,53 +150,6 @@ from [table];
 </li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[GithubPageをはじめてみた]]></title>
-    <link href="http://sys-cat.github.io/blog/2015/12/07/githubpagewohazimetemita/"/>
-    <updated>2015-12-07T19:18:11+09:00</updated>
-    <id>http://sys-cat.github.io/blog/2015/12/07/githubpagewohazimetemita</id>
-    <content type="html"><![CDATA[<p>普段ブログをはじめてみてはすぐやめみたいなことしてたので
-いろいろ気軽に報告出来るところがなかったので簡単に場所作れて適当なこと書けるとこにしてみた。<br/>
-というわけでOctopressを使ってみた。</p>
-
-<p>環境の構築がめんどいというのはあったけどやったらやったで面白みがあるので良いなぁと。<br/>
-転職もしたし良い機会かなとも。</p>
-
-<hr />
-
-<p>さて、ここでは以下のようなことを書くと思うよ。</p>
-
-<ul>
-<li>技術ネタ</li>
-<li>かなり不定期なブログ</li>
-<li>ポエム的なこと</li>
-</ul>
-
-
-<p>技術ネタはQiitaにも投稿はしてるけど長文になったりする場合はここが多くなるのかな。<br/>
-運用的なもろもろは後々考えていこうかなと思う。</p>
-
-<hr />
-
-<p>転職をして気付いたら一週間経ってしまっていた。<br/>
-職場は自宅から程よく近く、かつ近すぎない感じ。ドアツードアで1時間かからない位。<br/>
-朝のラッシュが大変だけどしばらくは朝早めに来れるように習慣づけられたらなと思ってる。</p>
-
-<p>開発言語はPerlを利用している。<br/>
-正直細かいところはわからないけどPerlで数百万単位のユーザを抱えてやっていけてるのにはびっくり。<br/>
-細かい仕様についてはまだまだこれから学んで行くことになると思うけど癖があるツールを<br/>
-うまい具合にいなしつつ改善していっているみたい。凄いの一言。</p>
-
-<p>社内の雰囲気は殺伐としておらず各々が笑うときは笑う、真剣に話すときはすごく真面目に。<br/>
-そういうONOFFの切り替えがしっかりしている会社さんだなぁという印象。<br/>
-居心地が良すぎて何年後になるか分からない転職をためらってしまうんじゃないかと今から不安だな…</p>
-
-<p>時間的にも余裕がある会社さんなので勉強出来る環境でもある。<br/>
-今まであまりに時間に余裕の無い生活を送ってきたので少し精神的にも体力的にもやすませて<br/>
-エンジニアとしての力をつけていきたいなと思う。</p>
 ]]></content>
   </entry>
   

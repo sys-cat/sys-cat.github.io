@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>System with Cat</title>
+  <title>MySQLでUnixTimeをTimestampに変換しようとしてつらかった話 - System with Cat</title>
   <meta name="author" content="sys_cat">
 
   
@@ -23,7 +23,7 @@ date 1
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://sys-cat.github.io">
+  <link rel="canonical" href="http://sys-cat.github.io/blog/2015/12/08/myslq-from-unixtime">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="System with Cat" type="application/atom+xml">
@@ -68,15 +68,12 @@ date 1
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/12/08/myslq-from-unixtime/">MySQLでUnixTimeをTimestampに変換しようとしてつらかった話</a></h1>
+      <h1 class="entry-title">MySQLでUnixTimeをTimestampに変換しようとしてつらかった話</h1>
     
     
       <p class="meta">
@@ -92,7 +89,7 @@ date 1
   </header>
 
 
-  <div class="entry-content"><p>最近遭遇して大変だった話。</p>
+<div class="entry-content"><p>最近遭遇して大変だった話。</p>
 
 <h3>前提</h3>
 
@@ -243,85 +240,53 @@ date 1
 </ul>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
+  
+
+<span class="byline author vcard">Posted by <span class="fn">sys_cat</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-12-08T12:11:27+09:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:11 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/blog/'>blog</a>, <a class='category' href='/blog/categories/technology/'>technology</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2015/12/07/githubpagewohazimetemita/">GithubPageをはじめてみた</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-12-07T19:18:11+09:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:18 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>普段ブログをはじめてみてはすぐやめみたいなことしてたので
-いろいろ気軽に報告出来るところがなかったので簡単に場所作れて適当なこと書けるとこにしてみた。<br/>
-というわけでOctopressを使ってみた。</p>
-
-<p>環境の構築がめんどいというのはあったけどやったらやったで面白みがあるので良いなぁと。<br/>
-転職もしたし良い機会かなとも。</p>
-
-<hr />
-
-<p>さて、ここでは以下のようなことを書くと思うよ。</p>
-
-<ul>
-<li>技術ネタ</li>
-<li>かなり不定期なブログ</li>
-<li>ポエム的なこと</li>
-</ul>
-
-
-<p>技術ネタはQiitaにも投稿はしてるけど長文になったりする場合はここが多くなるのかな。<br/>
-運用的なもろもろは後々考えていこうかなと思う。</p>
-
-<hr />
-
-<p>転職をして気付いたら一週間経ってしまっていた。<br/>
-職場は自宅から程よく近く、かつ近すぎない感じ。ドアツードアで1時間かからない位。<br/>
-朝のラッシュが大変だけどしばらくは朝早めに来れるように習慣づけられたらなと思ってる。</p>
-
-<p>開発言語はPerlを利用している。<br/>
-正直細かいところはわからないけどPerlで数百万単位のユーザを抱えてやっていけてるのにはびっくり。<br/>
-細かい仕様についてはまだまだこれから学んで行くことになると思うけど癖があるツールを<br/>
-うまい具合にいなしつつ改善していっているみたい。凄いの一言。</p>
-
-<p>社内の雰囲気は殺伐としておらず各々が笑うときは笑う、真剣に話すときはすごく真面目に。<br/>
-そういうONOFFの切り替えがしっかりしている会社さんだなぁという印象。<br/>
-居心地が良すぎて何年後になるか分からない転職をためらってしまうんじゃないかと今から不安だな…</p>
-
-<p>時間的にも余裕がある会社さんなので勉強出来る環境でもある。<br/>
-今まであまりに時間に余裕の無い生活を送ってきたので少し精神的にも体力的にもやすませて<br/>
-エンジニアとしての力をつけていきたいなと思う。</p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sys-cat.github.io/blog/2015/12/08/myslq-from-unixtime/" data-via="" data-counturl="http://sys-cat.github.io/blog/2015/12/08/myslq-from-unixtime/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <br />
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/12/07/githubpagewohazimetemita/" title="Previous Post: GithubPageをはじめてみた">&laquo; GithubPageをはじめてみた</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -345,6 +310,7 @@ date 1
 
   
 </aside>
+
 
     </div>
   </div>
