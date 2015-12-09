@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tips | System with Cat]]></title>
   <link href="http://sys-cat.github.io/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://sys-cat.github.io/"/>
-  <updated>2015-12-08T20:17:33+09:00</updated>
+  <updated>2015-12-09T15:46:25+09:00</updated>
   <id>http://sys-cat.github.io/</id>
   <author>
     <name><![CDATA[sys_cat]]></name>
@@ -15,10 +15,13 @@
   
   <entry>
     <title type="html"><![CDATA[MySQLでUnixTimeをTimestampに変換しようとしてつらかった話]]></title>
-    <link href="http://sys-cat.github.io/blog/2015/12/08/myslq-from-unixtime/"/>
-    <updated>2015-12-08T12:11:27+09:00</updated>
-    <id>http://sys-cat.github.io/blog/2015/12/08/myslq-from-unixtime</id>
+    <link href="http://sys-cat.github.io/blog/2015/12/09/myslq-from-unixtime/"/>
+    <updated>2015-12-09T15:40:00+09:00</updated>
+    <id>http://sys-cat.github.io/blog/2015/12/09/myslq-from-unixtime</id>
     <content type="html"><![CDATA[<p>最近遭遇して大変だった話。</p>
+
+<!-- more -->
+
 
 <h3>前提</h3>
 
@@ -150,6 +153,21 @@ from [table];
 </li>
 </ul>
 
+
+<h3>追記（2015-12-09）</h3>
+
+<p>Caseを追加しなくても日付の変換は出来るということを教えてもらった
+こんなSQLで日付の変換は正数でも負数でも両方変換出来る。</p>
+
+<pre><code class="sql">select
+ date_format(
+     date_add(from_unixtime(0), interval unixtime second),
+    '%Y-%m-%d %T'
+ )
+from table;
+</code></pre>
+
+<p>ただし対象カラムにNullとかが入る場合はWarningされちゃうのでその辺どうにかしたいなぁとおもってる。</p>
 ]]></content>
   </entry>
   

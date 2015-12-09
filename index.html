@@ -9,12 +9,7 @@
   <meta name="author" content="sys_cat">
 
   
-  <meta name="description" content="最近遭遇して大変だった話。 前提 Aから受け取ったデータをこちら側のBというDBに保存する。
-その過程で日時のデータはUnixTimeに変換して保存している。 だいたいこんなイメージ id
-date 1
--100000 2
-1480000 3
-0 問題点 &hellip;">
+  <meta name="description" content="最近遭遇して大変だった話。 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -36,6 +31,18 @@ date 1
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-71192655-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -76,7 +83,7 @@ date 1
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/12/08/myslq-from-unixtime/">MySQLでUnixTimeをTimestampに変換しようとしてつらかった話</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/12/09/myslq-from-unixtime/">MySQLでUnixTimeをTimestampに変換しようとしてつらかった話</a></h1>
     
     
       <p class="meta">
@@ -85,7 +92,7 @@ date 1
 
 
 
-<time class='entry-date' datetime='2015-12-08T12:11:27+09:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:11 pm</span></time>
+<time class='entry-date' datetime='2015-12-09T15:40:00+09:00'><span class='date'>2015-12-09</span> <span class='time'>3:40 pm</span></time>
         
       </p>
     
@@ -94,156 +101,12 @@ date 1
 
   <div class="entry-content"><p>最近遭遇して大変だった話。</p>
 
-<h3>前提</h3>
-
-<p>Aから受け取ったデータをこちら側のBというDBに保存する。<br/>
-その過程で日時のデータはUnixTimeに変換して保存している。</p>
-
-<p>だいたいこんなイメージ</p>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">id</th>
-<th style="text-align:left;">date</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">1</td>
-<td style="text-align:left;">-100000</td>
-</tr>
-<tr>
-<td style="text-align:left;">2</td>
-<td style="text-align:left;">1480000</td>
-</tr>
-<tr>
-<td style="text-align:left;">3</td>
-<td style="text-align:left;">0</td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>問題点</h3>
-
-<p>問題はこれを外部に出力するときにUnixtimeを日付データに変換しないといけないということ…</p>
-
-<p>MySQLだと <a href="https://dev.mysql.com/doc/refman/5.6/ja/date-and-time-functions.html#function_from-unixtime"><code>from_unixtime</code></a> を利用することになるのだが、この関数は0未満のデータは変換出来ない仕様になっている。</p>
-
-<p>プログラムで中身を出力してEachやForeachでループさせてDateTimeモジュール的なもので書き換えてあげれば問題は無いのだけど実際はレコード数が数百万単位になるので時間がかかって仕方がない…</p>
-
-<p>ということで以下の観点からSQLを模索してみた。</p>
-
-<ul>
-<li>UnixTimeは0以下と0以上が混在する</li>
-<li>両方変換する</li>
-<li>書式は <code>YYYY-MM-DD HH:mm:ss</code> とする</li>
-<li>必ずSQLで処理する</li>
-</ul>
-
-
-<h3>書けたSQL</h3>
-
-<p>こんな感じで。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span>
-</span><span class='line'><span class="p">(</span><span class="k">case</span>
-</span><span class='line'><span class="k">when</span> <span class="p">[</span><span class="k">column</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">then</span>
-</span><span class='line'> <span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">DATE_SUB</span><span class="p">(</span><span class="n">from_unixtime</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">INTERVAL</span> <span class="p">(</span>
-</span><span class='line'>  <span class="n">DATEDIFF</span><span class="p">(</span>
-</span><span class='line'>   <span class="n">from_unixtime</span><span class="p">(</span>
-</span><span class='line'>    <span class="k">ABS</span><span class="p">(</span>
-</span><span class='line'>     <span class="k">cast</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="k">cast</span><span class="p">([</span><span class="k">column</span><span class="p">]</span> <span class="k">as</span> <span class="n">signed</span><span class="p">)</span> <span class="k">AS</span> <span class="n">SIGNED</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">)</span>
-</span><span class='line'>   <span class="p">),</span>
-</span><span class='line'>   <span class="n">from_unixtime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">)</span>
-</span><span class='line'> <span class="p">)</span> <span class="k">day</span><span class="p">),</span> <span class="s1">&#39;%Y-%m-%d %T&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="k">when</span> <span class="p">[</span><span class="k">column</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">then</span>
-</span><span class='line'> <span class="n">from_unixtime</span><span class="p">(</span><span class="k">cast</span><span class="p">([</span><span class="k">column</span><span class="p">]</span> <span class="k">as</span> <span class="n">signed</span><span class="p">))</span>
-</span><span class='line'><span class="k">else</span> <span class="k">null</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="p">[</span><span class="k">column</span><span class="p">]</span>
-</span><span class='line'><span class="k">from</span> <span class="p">[</span><span class="k">table</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>詳細の説明を。</p>
-
-<ul>
-<li><code>case when [条件式] then else [return] end</code>
-
-<ul>
-<li>SQLでのIF文</li>
-</ul>
-</li>
-<li><code>ABS</code>
-
-<ul>
-<li>絶対値を取得するメソッド：UNSIGNEDみたいな符号付きのデータだと異常値が出るのでSIGNEDにCastしている</li>
-</ul>
-</li>
-<li><code>from_unixtime()</code>
-
-<ul>
-<li>UnixtimeからDatetimeへの変換を行う。0未満はNullを返す</li>
-</ul>
-</li>
-<li><code>datediff(date1, date2)</code>
-
-<ul>
-<li>date1とdate2との差分を求めるdate1の方が大きいと正数になる</li>
-</ul>
-</li>
-<li><code>date_sub(date1, INTERVAL [n] day)</code>
-
-<ul>
-<li>date1からn日分引く。dayだけでなく年、週、時間など様々な単位で取れる</li>
-</ul>
-</li>
-<li><code>date_format(date, '[format-text]')</code>
-
-<ul>
-<li>dateを[format-text]の書式へ変換する</li>
-</ul>
-</li>
-</ul>
-
-
-<p>これで0以上の時と0未満の時で異なる条件のSQLを記述することが出来た。
-ベンチマークはまだだがCast周りを切り詰めて行けば処理速度も少しは上がると思う。</p>
-
-<h3>学び</h3>
-
-<ul>
-<li>IF文はSQLでも書ける</li>
-<li>Unixtimeの変換は一通りは出来る</li>
-<li>日付のデータはUnixTimeよりDate型で残しておきたいなぁ…
-
-<ul>
-<li>仕様なら仕方ないけど対応がつらい…</li>
-</ul>
-</li>
-</ul>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/09/myslq-from-unixtime/">more</a>
+    </footer>
   
 
 
@@ -263,7 +126,7 @@ date 1
 
 
 
-<time class='entry-date' datetime='2015-12-07T19:18:11+09:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:18 pm</span></time>
+<time class='entry-date' datetime='2015-12-07T19:18:11+09:00'><span class='date'>2015-12-07</span> <span class='time'>7:18 pm</span></time>
         
       </p>
     
@@ -329,7 +192,7 @@ date 1
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/12/08/myslq-from-unixtime/">MySQLでUnixTimeをTimestampに変換しようとしてつらかった話</a>
+        <a href="/blog/2015/12/09/myslq-from-unixtime/">MySQLでUnixTimeをTimestampに変換しようとしてつらかった話</a>
       </li>
     
       <li class="post">

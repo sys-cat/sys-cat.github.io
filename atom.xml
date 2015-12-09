@@ -4,7 +4,7 @@
   <title><![CDATA[System with Cat]]></title>
   <link href="http://sys-cat.github.io/atom.xml" rel="self"/>
   <link href="http://sys-cat.github.io/"/>
-  <updated>2015-12-08T20:17:33+09:00</updated>
+  <updated>2015-12-09T15:46:25+09:00</updated>
   <id>http://sys-cat.github.io/</id>
   <author>
     <name><![CDATA[sys_cat]]></name>
@@ -15,10 +15,13 @@
   
   <entry>
     <title type="html"><![CDATA[MySQLでUnixTimeをTimestampに変換しようとしてつらかった話]]></title>
-    <link href="http://sys-cat.github.io/blog/2015/12/08/myslq-from-unixtime/"/>
-    <updated>2015-12-08T12:11:27+09:00</updated>
-    <id>http://sys-cat.github.io/blog/2015/12/08/myslq-from-unixtime</id>
+    <link href="http://sys-cat.github.io/blog/2015/12/09/myslq-from-unixtime/"/>
+    <updated>2015-12-09T15:40:00+09:00</updated>
+    <id>http://sys-cat.github.io/blog/2015/12/09/myslq-from-unixtime</id>
     <content type="html"><![CDATA[<p>最近遭遇して大変だった話。</p>
+
+<!-- more -->
+
 
 <h3>前提</h3>
 
@@ -168,6 +171,28 @@
 </li>
 </ul>
 
+
+<h3>追記（2015-12-09）</h3>
+
+<p>Caseを追加しなくても日付の変換は出来るということを教えてもらった
+こんなSQLで日付の変換は正数でも負数でも両方変換出来る。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span>
+</span><span class='line'> <span class="n">date_format</span><span class="p">(</span>
+</span><span class='line'>   <span class="n">date_add</span><span class="p">(</span><span class="n">from_unixtime</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">interval</span> <span class="n">unixtime</span> <span class="k">second</span><span class="p">),</span>
+</span><span class='line'>  <span class="s1">&#39;%Y-%m-%d %T&#39;</span>
+</span><span class='line'> <span class="p">)</span>
+</span><span class='line'><span class="k">from</span> <span class="k">table</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ただし対象カラムにNullとかが入る場合はWarningされちゃうのでその辺どうにかしたいなぁとおもってる。</p>
 ]]></content>
   </entry>
   
