@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Technology | System with Cat]]></title>
   <link href="http://sys-cat.github.io/blog/categories/technology/atom.xml" rel="self"/>
   <link href="http://sys-cat.github.io/"/>
-  <updated>2015-12-09T15:52:01+09:00</updated>
+  <updated>2015-12-09T15:55:42+09:00</updated>
   <id>http://sys-cat.github.io/</id>
   <author>
     <name><![CDATA[sys_cat]]></name>
@@ -167,7 +167,8 @@ from [table];
 from table;
 </code></pre>
 
-<p>ただし対象カラムにNullとかが入る場合はWarningされちゃうのでその辺どうにかしたいなぁとおもってる。</p>
+<p>ただし対象カラムにNullとかが入る場合はWarningされちゃうのでその辺どうにかしたいなぁとおもってる。<br/>
+<a href="https://twitter.com/QooQulU">@QooQulU</a> 君、ありがとー</p>
 ]]></content>
   </entry>
   
