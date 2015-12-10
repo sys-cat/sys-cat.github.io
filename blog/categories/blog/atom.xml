@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Blog, | System with Cat]]></title>
+  <title><![CDATA[Category: Blog | System with Cat]]></title>
   <link href="http://sys-cat.github.io/blog/categories/blog/atom.xml" rel="self"/>
   <link href="http://sys-cat.github.io/"/>
-  <updated>2015-12-10T17:59:12+09:00</updated>
+  <updated>2015-12-10T18:02:43+09:00</updated>
   <id>http://sys-cat.github.io/</id>
   <author>
     <name><![CDATA[sys_cat]]></name>
@@ -52,6 +52,212 @@ warn Dumper($hoge);
 </code></pre>
 
 <p>こんなモジュールがあるんだなぁって。。。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MySQLでUnixTimeをTimestampに変換しようとしてつらかった話]]></title>
+    <link href="http://sys-cat.github.io/blog/2015/12/09/myslq-from-unixtime/"/>
+    <updated>2015-12-09T15:40:00+09:00</updated>
+    <id>http://sys-cat.github.io/blog/2015/12/09/myslq-from-unixtime</id>
+    <content type="html"><![CDATA[<p>最近遭遇して大変だった話。</p>
+
+<!-- more -->
+
+
+<h3>前提</h3>
+
+<p>Aから受け取ったデータをこちら側のBというDBに保存する。<br/>
+その過程で日時のデータはUnixTimeに変換して保存している。</p>
+
+<p>だいたいこんなイメージ</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">id</th>
+<th style="text-align:left;">date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">1</td>
+<td style="text-align:left;">-100000</td>
+</tr>
+<tr>
+<td style="text-align:left;">2</td>
+<td style="text-align:left;">1480000</td>
+</tr>
+<tr>
+<td style="text-align:left;">3</td>
+<td style="text-align:left;">0</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>問題点</h3>
+
+<p>問題はこれを外部に出力するときにUnixtimeを日付データに変換しないといけないということ…</p>
+
+<p>MySQLだと <a href="https://dev.mysql.com/doc/refman/5.6/ja/date-and-time-functions.html#function_from-unixtime"><code>from_unixtime</code></a> を利用することになるのだが、この関数は0未満のデータは変換出来ない仕様になっている。</p>
+
+<p>プログラムで中身を出力してEachやForeachでループさせてDateTimeモジュール的なもので書き換えてあげれば問題は無いのだけど実際はレコード数が数百万単位になるので時間がかかって仕方がない…</p>
+
+<p>ということで以下の観点からSQLを模索してみた。</p>
+
+<ul>
+<li>UnixTimeは0以下と0以上が混在する</li>
+<li>両方変換する</li>
+<li>書式は <code>YYYY-MM-DD HH:mm:ss</code> とする</li>
+<li>必ずSQLで処理する</li>
+</ul>
+
+
+<h3>書けたSQL</h3>
+
+<p>こんな感じで。</p>
+
+<pre><code class="sql">select
+(case
+when [column] &lt; 0 then
+ DATE_FORMAT(DATE_SUB(from_unixtime(0), INTERVAL (
+  DATEDIFF(
+   from_unixtime(
+    ABS(
+     cast(0 - cast([column] as signed) AS SIGNED)
+    )
+   ),
+   from_unixtime(0)
+  )
+ ) day), '%Y-%m-%d %T')
+when [column] &gt;= 0 then
+ from_unixtime(cast([column] as signed))
+else null end) as [column]
+from [table];
+</code></pre>
+
+<p>詳細の説明を。</p>
+
+<ul>
+<li><code>case when [条件式] then else [return] end</code>
+
+<ul>
+<li>SQLでのIF文</li>
+</ul>
+</li>
+<li><code>ABS</code>
+
+<ul>
+<li>絶対値を取得するメソッド：UNSIGNEDみたいな符号付きのデータだと異常値が出るのでSIGNEDにCastしている</li>
+</ul>
+</li>
+<li><code>from_unixtime()</code>
+
+<ul>
+<li>UnixtimeからDatetimeへの変換を行う。0未満はNullを返す</li>
+</ul>
+</li>
+<li><code>datediff(date1, date2)</code>
+
+<ul>
+<li>date1とdate2との差分を求めるdate1の方が大きいと正数になる</li>
+</ul>
+</li>
+<li><code>date_sub(date1, INTERVAL [n] day)</code>
+
+<ul>
+<li>date1からn日分引く。dayだけでなく年、週、時間など様々な単位で取れる</li>
+</ul>
+</li>
+<li><code>date_format(date, '[format-text]')</code>
+
+<ul>
+<li>dateを[format-text]の書式へ変換する</li>
+</ul>
+</li>
+</ul>
+
+
+<p>これで0以上の時と0未満の時で異なる条件のSQLを記述することが出来た。
+ベンチマークはまだだがCast周りを切り詰めて行けば処理速度も少しは上がると思う。</p>
+
+<h3>学び</h3>
+
+<ul>
+<li>IF文はSQLでも書ける</li>
+<li>Unixtimeの変換は一通りは出来る</li>
+<li>日付のデータはUnixTimeよりDate型で残しておきたいなぁ…
+
+<ul>
+<li>仕様なら仕方ないけど対応がつらい…</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>追記（2015-12-09）</h3>
+
+<p>Caseを追加しなくても日付の変換は出来るということを教えてもらった
+こんなSQLで日付の変換は正数でも負数でも両方変換出来る。</p>
+
+<pre><code class="sql">select
+ date_format(
+     date_add(from_unixtime(0), interval unixtime second),
+    '%Y-%m-%d %T'
+ )
+from table;
+</code></pre>
+
+<p>ただし対象カラムにNullとかが入る場合はWarningされちゃうのでその辺どうにかしたいなぁとおもってる。<br/>
+<a href="https://twitter.com/QooQulU">@QooQulU</a> 君、ありがとー</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GithubPageをはじめてみた]]></title>
+    <link href="http://sys-cat.github.io/blog/2015/12/07/githubpagewohazimetemita/"/>
+    <updated>2015-12-07T19:18:11+09:00</updated>
+    <id>http://sys-cat.github.io/blog/2015/12/07/githubpagewohazimetemita</id>
+    <content type="html"><![CDATA[<p>普段ブログをはじめてみてはすぐやめみたいなことしてたので
+いろいろ気軽に報告出来るところがなかったので簡単に場所作れて適当なこと書けるとこにしてみた。<br/>
+というわけでOctopressを使ってみた。</p>
+
+<p>環境の構築がめんどいというのはあったけどやったらやったで面白みがあるので良いなぁと。<br/>
+転職もしたし良い機会かなとも。</p>
+
+<hr />
+
+<p>さて、ここでは以下のようなことを書くと思うよ。</p>
+
+<ul>
+<li>技術ネタ</li>
+<li>かなり不定期なブログ</li>
+<li>ポエム的なこと</li>
+</ul>
+
+
+<p>技術ネタはQiitaにも投稿はしてるけど長文になったりする場合はここが多くなるのかな。<br/>
+運用的なもろもろは後々考えていこうかなと思う。</p>
+
+<hr />
+
+<p>転職をして気付いたら一週間経ってしまっていた。<br/>
+職場は自宅から程よく近く、かつ近すぎない感じ。ドアツードアで1時間かからない位。<br/>
+朝のラッシュが大変だけどしばらくは朝早めに来れるように習慣づけられたらなと思ってる。</p>
+
+<p>開発言語はPerlを利用している。<br/>
+正直細かいところはわからないけどPerlで数百万単位のユーザを抱えてやっていけてるのにはびっくり。<br/>
+細かい仕様についてはまだまだこれから学んで行くことになると思うけど癖があるツールを<br/>
+うまい具合にいなしつつ改善していっているみたい。凄いの一言。</p>
+
+<p>社内の雰囲気は殺伐としておらず各々が笑うときは笑う、真剣に話すときはすごく真面目に。<br/>
+そういうONOFFの切り替えがしっかりしている会社さんだなぁという印象。<br/>
+居心地が良すぎて何年後になるか分からない転職をためらってしまうんじゃないかと今から不安だな…</p>
+
+<p>時間的にも余裕がある会社さんなので勉強出来る環境でもある。<br/>
+今まであまりに時間に余裕の無い生活を送ってきたので少し精神的にも体力的にもやすませて<br/>
+エンジニアとしての力をつけていきたいなと思う。</p>
 ]]></content>
   </entry>
   
