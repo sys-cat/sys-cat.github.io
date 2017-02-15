@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+
+<base href="http://sys-cat.github.io">
+<title>
+
+
+     MySQLでUnixTimeをTimestampに変換しようとしてつらかった話 
+
+</title>
+<link rel="canonical" href="http://sys-cat.github.io/blog/2015-12-08-myslq-from-unixtime/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/pygments.css">
+    <link rel="stylesheet" href="/css/main.css">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="/img/favicon.ico"
+
+>
+
+
+
+
+
+
+</head>
+
+
+<body lang="">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+            <a href="/"><div class="name"></div></a>
+            
+            <nav>
+                <ul>
+                    <li class="nav-blog"><a href="/blog/">Blog</a></li>
+                    <li class="nav-about"><a href="/about/">About</a></li>
+                    <li class="nav-code"><a href="/code/">Code</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="http://sys-cat.github.io/index.xml"><img class="icon" src="/img/rss.svg" alt="rss" /></a>
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    MySQLでUnixTimeをTimestampに変換しようとしてつらかった話
+
+</div>
+
+                    <div class="initials"><a href="http://sys-cat.github.io"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Wed Dec 9 2015 15:40:00 JST'>Dec 9, 2015</div>
+                    
+                    
+                    <div class="reading-time"><div class="middot"></div>1 minute read</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p>最近遭遇して大変だった話。
+<!-- more --></p>
+
+<h3 id="前提">前提</h3>
+
+<p>Aから受け取ったデータをこちら側のBというDBに保存する。<br />
+その過程で日時のデータはUnixTimeに変換して保存している。</p>
+
+<p>だいたいこんなイメージ</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">id</th>
+<th align="left">date</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">-100000</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">1480000</td>
+</tr>
+
+<tr>
+<td align="left">3</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="問題点">問題点</h3>
+
+<p>問題はこれを外部に出力するときにUnixtimeを日付データに変換しないといけないということ…</p>
+
+<p>MySQLだと <a href="https://dev.mysql.com/doc/refman/5.6/ja/date-and-time-functions.html#function_from-unixtime"><code>from_unixtime</code></a> を利用することになるのだが、この関数は0未満のデータは変換出来ない仕様になっている。</p>
+
+<p>プログラムで中身を出力してEachやForeachでループさせてDateTimeモジュール的なもので書き換えてあげれば問題は無いのだけど実際はレコード数が数百万単位になるので時間がかかって仕方がない…</p>
+
+<p>ということで以下の観点からSQLを模索してみた。</p>
+
+<ul>
+<li>UnixTimeは0以下と0以上が混在する</li>
+<li>両方変換する</li>
+<li>書式は <code>YYYY-MM-DD HH:mm:ss</code> とする</li>
+<li>必ずSQLで処理する</li>
+</ul>
+
+<h3 id="書けたsql">書けたSQL</h3>
+
+<p>こんな感じで。</p>
+
+<pre><code class="language-sql">select
+(case
+when [column] &lt; 0 then
+ DATE_FORMAT(DATE_SUB(from_unixtime(0), INTERVAL (
+  DATEDIFF(
+   from_unixtime(
+    ABS(
+     cast(0 - cast([column] as signed) AS SIGNED)
+    )
+   ),
+   from_unixtime(0)
+  )
+ ) day), '%Y-%m-%d %T')
+when [column] &gt;= 0 then
+ from_unixtime(cast([column] as signed))
+else null end) as [column]
+from [table];
+</code></pre>
+
+<p>詳細の説明を。</p>
+
+<ul>
+<li><code>case when [条件式] then else [return] end</code>
+
+<ul>
+<li>SQLでのIF文</li>
+</ul></li>
+<li><code>ABS</code>
+
+<ul>
+<li>絶対値を取得するメソッド：UNSIGNEDみたいな符号付きのデータだと異常値が出るのでSIGNEDにCastしている</li>
+</ul></li>
+<li><code>from_unixtime()</code>
+
+<ul>
+<li>UnixtimeからDatetimeへの変換を行う。0未満はNullを返す</li>
+</ul></li>
+<li><code>datediff(date1, date2)</code>
+
+<ul>
+<li>date1とdate2との差分を求めるdate1の方が大きいと正数になる</li>
+</ul></li>
+<li><code>date_sub(date1, INTERVAL [n] day)</code>
+
+<ul>
+<li>date1からn日分引く。dayだけでなく年、週、時間など様々な単位で取れる</li>
+</ul></li>
+<li><code>date_format(date, '[format-text]')</code>
+
+<ul>
+<li>dateを[format-text]の書式へ変換する</li>
+</ul></li>
+</ul>
+
+<p>これで0以上の時と0未満の時で異なる条件のSQLを記述することが出来た。
+ベンチマークはまだだがCast周りを切り詰めて行けば処理速度も少しは上がると思う。</p>
+
+<h3 id="学び">学び</h3>
+
+<ul>
+<li>IF文はSQLでも書ける</li>
+<li>Unixtimeの変換は一通りは出来る</li>
+<li>日付のデータはUnixTimeよりDate型で残しておきたいなぁ…
+
+<ul>
+<li>仕様なら仕方ないけど対応がつらい…
+
+<br /></li>
+</ul></li>
+</ul>
+
+<h3 id="追記-2015-12-09">追記（2015-12-09）</h3>
+
+<p>Caseを追加しなくても日付の変換は出来るということを教えてもらった
+こんなSQLで日付の変換は正数でも負数でも両方変換出来る。</p>
+
+<pre><code class="language-sql">select
+ date_format(
+	 date_add(from_unixtime(0), interval unixtime second),
+ 	'%Y-%m-%d %T'
+ )
+from table;
+</code></pre>
+
+<p>ただし対象カラムにNullとかが入る場合はWarningされちゃうのでその辺どうにかしたいなぁとおもってる。<br />
+<a href="https://twitter.com/QooQulU">@QooQulU</a> 君、ありがとー</p>
+
+                <br>
+                <p><a href="/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+</body>
+</html>
+
