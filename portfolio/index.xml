@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Portfolios on System with Cat</title>
+    <link>http://sys-cat.github.io/portfolio/</link>
+    <description>Recent content in Portfolios on System with Cat</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Mon, 04 Dec 2017 16:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://sys-cat.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>経歴書</title>
+      <link>http://sys-cat.github.io/portfolio/history/</link>
+      <pubDate>Mon, 04 Dec 2017 16:00:00 +0900</pubDate>
+      
+      <guid>http://sys-cat.github.io/portfolio/history/</guid>
+      <description> 職務経歴書 職務 1社目：Web制作会社 在職期間：2010/04 ~ 2012&amp;frasl;02
+新卒で入社した企業。以下の業務を担当
+ HTMLのみで制作されるWebサイトのHTMLコーディング（コーダ） コーダ適正が無かった為ディレクターのお手伝いをする（AD） 大規模案件のCSを担当するようになりそのままCS部署の担当へ。  転職のきっかけ
+CSがやりたい事では無かったため。
+2社目：開発・SES派遣会社 在職期間：2012/2 ~ 2015&amp;frasl;10
+開発がしたいと言うモチベーションだけという私を雇ってくれました。 しばらく社内常駐での開発を行っていましたがその後SESでの業務へ異動となりました。 異動後、2年半で5社程経験しました。
+ 1社目：ポータルサイトの移転開発  FuelPHPフレームワークでの開発  2社目：受託開発企業での開発業務  FuelPHPでの検索サイト開発 PHPでのサイト開発 RubyOnRailsのサイト保守対応 PHPでの化粧品会社プロモーションサイト構築 PHPでのイヤホンプロモーションサイト構築  3社目：アドテクノロジー企業  FuelPHPでの管理画面開発  4社目：ポイントサイト運営企業  RubyOnRailsでのサイト保守・開発 laravelでのAPI開発  5社目：CRM開発会社  RubyOnRailsでのサイト保守・開発   転職のきっかけ
+社内での思想・業種の違い。
+3社目：SNS運営会社 在職期間：2015/12 ~
+知り合いのつてで面談を受けて入社。昔からある老舗のSNSというのもあって入社当初は本番化するのにIRCクライアントで連絡しなければならない程だった。
+ Perlでの大規模SNSサイトの保守・開発 PHPでの既存サイトの改修 人事サイトの保守運用 外部サイトへのAPI公開に伴うGolangでのAPI開発 Pythonでの自社アプリへ提供するAPIの開発  その他 Github  https://github.com/sys-cat  CPAN  http://search.cpan.org/~syscat/WebService-Azure-Search-0.04/lib/WebService/Azure/Search.pm  </description>
+    </item>
+    
+    <item>
+      <title>履歴書</title>
+      <link>http://sys-cat.github.io/portfolio/resume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://sys-cat.github.io/portfolio/resume/</guid>
+      <description> 基本情報  名前：佐々木誠 生年月日：1988/09/10 居住地：東京都港区 最終学歴：日本電子専門学校高度情報処理科卒  学歴  2007 / 03 : 都立豊島高等学校 普通科 卒業 2007 / 04 : 日本電子専門学校 高度情報処理科 入学 2010 / 03 : 日本電子専門学校 高度情報処理科 卒業  社歴  2010 / 04 : Web制作会社入社 2012 / 02 : Web制作会社退職
+ 2012 / 02 : 開発・SES派遣会社入社
+ 2015 / 10 : 開発・SES派遣会社退職
+ 2015 / 12 : 現職
+  </description>
+    </item>
+    
+  </channel>
+</rss>
