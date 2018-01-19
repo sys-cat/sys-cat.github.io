@@ -2,12 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>System with Cat</title>
-    <link>http://sys-cat.github.io/index.xml</link>
+    <link>http://sys-cat.github.io/</link>
     <description>Recent content on System with Cat</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-JP</language>
-    <lastBuildDate>Wed, 15 Feb 2017 21:59:37 +0900</lastBuildDate>
-    <atom:link href="http://sys-cat.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Wed, 17 Jan 2018 12:30:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://sys-cat.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2年経過した</title>
+      <link>http://sys-cat.github.io/blog/2018-01-17-newyear-on-2018/</link>
+      <pubDate>Wed, 17 Jan 2018 12:30:00 +0900</pubDate>
+      
+      <guid>http://sys-cat.github.io/blog/2018-01-17-newyear-on-2018/</guid>
+      <description>&lt;p&gt;転職して2年ほど経過した。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>code</title>
+      <link>http://sys-cat.github.io/code/</link>
+      <pubDate>Mon, 19 Jun 2017 17:29:07 +0900</pubDate>
+      
+      <guid>http://sys-cat.github.io/code/</guid>
+      <description> ParallelLogging - Testing parallel run server on golang jwt-cli - Generate jwt centense cliant Kinsokujiko - [Now Creating] Masking ng-word system WebService::Azure::Search - [CPAN] Request Query to AzureSearch  </description>
+    </item>
     
     <item>
       <title>転職して1年経ったり入院したりした話</title>
@@ -15,75 +37,9 @@
       <pubDate>Wed, 15 Feb 2017 21:59:37 +0900</pubDate>
       
       <guid>http://sys-cat.github.io/blog/2017-02-15-1years/</guid>
-      <description>
+      <description>&lt;p&gt;2015年の12月に転職してから1年と3ヶ月程経ってしまいました。&lt;/p&gt;
 
-&lt;p&gt;2015年の12月に転職してから1年と3ヶ月程経ってしまいました。&lt;br /&gt;
-まったく更新していなくて更新したいなぁ更新しなきゃなぁーなんて思ってたらいつの間にか経過してました。&lt;br /&gt;
-入社した時と大分立場も変わったので何があったか書いていこうと思います。&lt;/p&gt;
-
-&lt;h3 id=&#34;開発をしなくなった&#34;&gt;開発をしなくなった&lt;/h3&gt;
-
-&lt;p&gt;2016年3月頃から自分が作ったものがなかなか本番化されなくなってきました。&lt;br /&gt;
-別に自分が作ったものがダメだったとか不具合があったとかそういう訳では無いのですが、
-企画の都合というか仕様の不具合というか後から「あーすみません、やっぱ無しで」みたいな事が増えてきたんですね。&lt;/p&gt;
-
-&lt;p&gt;誰が悪いとかでは無いと思っているんですがチーム間のコミュニケーション・連携が上手く取れてなかったぁ&lt;br /&gt;
-と今はそんな風に思います。&lt;/p&gt;
-
-&lt;p&gt;で、開発をどれだけやっても自分の成果にならない事ばかり増えてきてしまってこの時はひたすら&lt;/p&gt;
-
-&lt;p&gt;「試用期間終わって評価を考えないといけない時期に来てるけど評価されない事ばかりだなぁ」&lt;/p&gt;
-
-&lt;p&gt;と思ってました。&lt;br /&gt;
-そんなんではいかん！何か自分しか出来ない事をやらないと！&lt;br /&gt;
-たまたま設計業務は経験があったし学生時代も一番得意な事だったので設計業務を買って出るようになりました。&lt;/p&gt;
-
-&lt;h3 id=&#34;サーバサイドのリーダーを努めた&#34;&gt;サーバサイドのリーダーを努めた&lt;/h3&gt;
-
-&lt;p&gt;開発業務をせずに設計業務をすることで少しずつ業務が回るようにはなってきたけれどそれでもコミュニケーション不足は否めない事が多く、
-企画を考える人と対立することが増えました。ちょうどこの頃から自分たちがやっている業務の方向性と企画・上層部の人たちが考えてる事に隔たりが多いんでは？
-という風に思う事が多くなったなと記憶しています。&lt;/p&gt;
-
-&lt;p&gt;丁度8月頃、自分が所属しているチームのリーダーと呑む機会があって呑んでいたときにそんな風に自分が考えていた&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;周りのチームとの連携&lt;/li&gt;
-&lt;li&gt;上層部や企画との連携&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;をどうすればいいかーなどと相談していました。&lt;br /&gt;
-そんな流れでチームリーダー代行みたいな事を9月頃から始めて11月頃に正式にサーバーサイドチームのリーダーを拝命することになりました。&lt;/p&gt;
-
-&lt;p&gt;ただ自分が率先していた設計周りについても同時期にチームが発足することになり掛け持ちでリーダーをするようになってました。&lt;/p&gt;
-
-&lt;p&gt;ここからはとにかく多忙で、自席に座っている時間が1日の内の2時間あればいいなぁという位にまでなっていたし
-忙しすぎて人との交流も大分希薄だったなぁと思います。&lt;/p&gt;
-
-&lt;h3 id=&#34;人生初入院した&#34;&gt;人生初入院した&lt;/h3&gt;
-
-&lt;p&gt;年も変わって2017年、割とリーダー業も板についてきて同時にインフラチームとの連携でメンテナンスに同行する機会が増えてきた時期だったと思うのですが
-1月の中頃だったと記憶してますが急に今まで経験した事の無い様な &lt;em&gt;頭皮がつっぱるよう&lt;/em&gt; な頭痛が出るようになりました。&lt;br /&gt;
-ロキソニンを飲んでもほとんど効果も無く、39度位の発熱があって救急で病院へ行った所 &lt;em&gt;髄膜炎&lt;/em&gt; の診断をもらい緊急入院する羽目になりました。&lt;/p&gt;
-
-&lt;p&gt;39度の熱が出ること自体ここ20年位経験が無かったのでひたすら朦朧としていて、
-救急医の「髄膜炎だけど、入院しないとそのまま帰ってもらう事になるけどいい？」という強烈な一言位しか覚えていないです…&lt;/p&gt;
-
-&lt;p&gt;なんとか2月頭に退院することが出来て、今はひたすらに&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;食事の栄養&lt;/li&gt;
-&lt;li&gt;無理をしない&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;事を意識しながらリハビリしつつ仕事をしています。&lt;/p&gt;
-
-&lt;h3 id=&#34;そんな感じの1年3ヶ月でした&#34;&gt;そんな感じの1年3ヶ月でした&lt;/h3&gt;
-
-&lt;p&gt;実際はもっと濃度が濃かったりしたんですけど長いやら短いやら…&lt;br /&gt;
-会社にももう3年以上居るような錯覚起こすくらいに日々いろんな事を経験してました。&lt;/p&gt;
-
-&lt;p&gt;現在は少しずつリハビリしながら設計業務をメインに日々企画と開発の橋渡しを行っていきたいなぁと思います。&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -92,14 +48,10 @@
       <pubDate>Wed, 15 Feb 2017 16:59:52 +0900</pubDate>
       
       <guid>http://sys-cat.github.io/about/</guid>
-      <description>&lt;p&gt;Name : sys-cat&lt;br /&gt;
-Github : &lt;a href=&#34;https://github.com/sys-cat&#34;&gt;https://github.com/sys-cat&lt;/a&gt;&lt;br /&gt;
-Twitter : &lt;a href=&#34;https://twitter.com/sys_cat&#34;&gt;https://twitter.com/sys_cat&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Webエンジニア。&lt;/p&gt;
-</description>
+      <description>Name : sys-cat
+Github : https://github.com/sys-cat
+Twitter : https://twitter.com/sys_cat
+Webエンジニア。</description>
     </item>
     
     <item>
@@ -108,37 +60,7 @@ Twitter : &lt;a href=&#34;https://twitter.com/sys_cat&#34;&gt;https://twitter.co
       <pubDate>Thu, 10 Dec 2015 18:00:00 +0900</pubDate>
       
       <guid>http://sys-cat.github.io/blog/2015-12-10-debug-perl-object/</guid>
-      <description>&lt;p&gt;Perlのお勉強のお話。
-
-入社して1周間チョット経って絶賛タスクを消化しまくる日々を過ごしています。&lt;br /&gt;
-なんせPerl力があまりに無いのでコーディングして慣れろって話ですね。わかります。&lt;/p&gt;
-
-&lt;p&gt;そんな訳でタスクを消化しているのですがPerlという言語は面白いですね。&lt;br /&gt;
-PHPやRubyに慣れた人間としてはPHPにも似てるしRubyにも似てるところあるなぁという認識が強いです。&lt;br /&gt;
-対象のシステムは非常に長く運用されたシステムで規模も数百万単位のユーザを管理するレベルでして、かれこれ10年近く運用され続けたものです。&lt;br /&gt;
-そんなシステムに知識0、モジュール周りの知識も皆無な僕が中身を見ると意味不明なコードがずらっと並んでるなという感覚すら出てきます。&lt;/p&gt;
-
-&lt;p&gt;とりあえず &lt;code&gt;sub&lt;/code&gt; はメソッド定義時に使う。そんなとこからのスタートだし仕方ないなぁとは思いつつ勉強の毎日。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;さて、そんな大規模な開発で&lt;strong&gt;ログを出力したいということは&lt;/strong&gt;まぁよくある話かなぁと思います。
-PHPやRubyだとWAFに &lt;code&gt;Logger&lt;/code&gt; クラスがあったりするのでそれ使えば良いのだけど
-Perlだとそれっぽいクラスが見当たらず…&lt;br /&gt;
-プロジェクト内で &lt;code&gt;info&lt;/code&gt;, &lt;code&gt;warn&lt;/code&gt; なんかを自作されてる部分があったのでそれを使えたのだけど
-配列な変数の中身を出力出来ず…どうすっかなと思っていろいろとあたってみたところ…&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Dumper&lt;/strong&gt; 使えば良いとの事。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-perl&#34;&gt;use strict;
-use warning;
-use Data::Dumper;
-
-.....
-warn Dumper($hoge);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;こんなモジュールがあるんだなぁって。。。&lt;/p&gt;</description>
+      <description></description>
     </item>
     
     <item>
@@ -147,152 +69,15 @@ warn Dumper($hoge);
       <pubDate>Wed, 09 Dec 2015 15:40:00 +0900</pubDate>
       
       <guid>http://sys-cat.github.io/blog/2015-12-08-myslq-from-unixtime/</guid>
-      <description>
-
-&lt;p&gt;最近遭遇して大変だった話。
-&lt;!-- more --&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;前提&#34;&gt;前提&lt;/h3&gt;
-
-&lt;p&gt;Aから受け取ったデータをこちら側のBというDBに保存する。&lt;br /&gt;
-その過程で日時のデータはUnixTimeに変換して保存している。&lt;/p&gt;
-
-&lt;p&gt;だいたいこんなイメージ&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;id&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;date&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;-100000&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1480000&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&#34;問題点&#34;&gt;問題点&lt;/h3&gt;
-
-&lt;p&gt;問題はこれを外部に出力するときにUnixtimeを日付データに変換しないといけないということ…&lt;/p&gt;
-
-&lt;p&gt;MySQLだと &lt;a href=&#34;https://dev.mysql.com/doc/refman/5.6/ja/date-and-time-functions.html#function_from-unixtime&#34;&gt;&lt;code&gt;from_unixtime&lt;/code&gt;&lt;/a&gt; を利用することになるのだが、この関数は0未満のデータは変換出来ない仕様になっている。&lt;/p&gt;
-
-&lt;p&gt;プログラムで中身を出力してEachやForeachでループさせてDateTimeモジュール的なもので書き換えてあげれば問題は無いのだけど実際はレコード数が数百万単位になるので時間がかかって仕方がない…&lt;/p&gt;
-
-&lt;p&gt;ということで以下の観点からSQLを模索してみた。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;UnixTimeは0以下と0以上が混在する&lt;/li&gt;
-&lt;li&gt;両方変換する&lt;/li&gt;
-&lt;li&gt;書式は &lt;code&gt;YYYY-MM-DD HH:mm:ss&lt;/code&gt; とする&lt;/li&gt;
-&lt;li&gt;必ずSQLで処理する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;書けたsql&#34;&gt;書けたSQL&lt;/h3&gt;
-
-&lt;p&gt;こんな感じで。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
-(case
-when [column] &amp;lt; 0 then
- DATE_FORMAT(DATE_SUB(from_unixtime(0), INTERVAL (
-  DATEDIFF(
-   from_unixtime(
-    ABS(
-     cast(0 - cast([column] as signed) AS SIGNED)
-    )
-   ),
-   from_unixtime(0)
-  )
- ) day), &#39;%Y-%m-%d %T&#39;)
-when [column] &amp;gt;= 0 then
- from_unixtime(cast([column] as signed))
-else null end) as [column]
-from [table];
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;詳細の説明を。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;case when [条件式] then else [return] end&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;SQLでのIF文&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ABS&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;絶対値を取得するメソッド：UNSIGNEDみたいな符号付きのデータだと異常値が出るのでSIGNEDにCastしている&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;from_unixtime()&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;UnixtimeからDatetimeへの変換を行う。0未満はNullを返す&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;datediff(date1, date2)&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;date1とdate2との差分を求めるdate1の方が大きいと正数になる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;date_sub(date1, INTERVAL [n] day)&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;date1からn日分引く。dayだけでなく年、週、時間など様々な単位で取れる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;date_format(date, &#39;[format-text]&#39;)&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;dateを[format-text]の書式へ変換する&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;これで0以上の時と0未満の時で異なる条件のSQLを記述することが出来た。
-ベンチマークはまだだがCast周りを切り詰めて行けば処理速度も少しは上がると思う。&lt;/p&gt;
-
-&lt;h3 id=&#34;学び&#34;&gt;学び&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;IF文はSQLでも書ける&lt;/li&gt;
-&lt;li&gt;Unixtimeの変換は一通りは出来る&lt;/li&gt;
-&lt;li&gt;日付のデータはUnixTimeよりDate型で残しておきたいなぁ…
-
-&lt;ul&gt;
-&lt;li&gt;仕様なら仕方ないけど対応がつらい…
-
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;追記-2015-12-09&#34;&gt;追記（2015-12-09）&lt;/h3&gt;
-
-&lt;p&gt;Caseを追加しなくても日付の変換は出来るということを教えてもらった
-こんなSQLで日付の変換は正数でも負数でも両方変換出来る。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
- date_format(
-	 date_add(from_unixtime(0), interval unixtime second),
- 	&#39;%Y-%m-%d %T&#39;
- )
-from table;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ただし対象カラムにNullとかが入る場合はWarningされちゃうのでその辺どうにかしたいなぁとおもってる。&lt;br /&gt;
-&lt;a href=&#34;https://twitter.com/QooQulU&#34;&gt;@QooQulU&lt;/a&gt; 君、ありがとー&lt;/p&gt;
-</description>
+      <description>最近遭遇して大変だった話。 前提 Aから受け取ったデータをこちら側のBというDBに保存する。
+その過程で日時のデータはUnixTimeに変換して保存している。
+だいたいこんなイメージ
+   id date     1 -100000   2 1480000   3 0    問題点 問題はこれを外部に出力するときにUnixtimeを日付データに変換しないといけないということ…
+MySQLだと from_unixtime を利用することになるのだが、この関数は0未満のデータは変換出来ない仕様になっている。
+プログラムで中身を出力してEachやForeachでループさせてDateTimeモジュール的なもので書き換えてあげれば問題は無いのだけど実際はレコード数が数百万単位になるので時間がかかって仕方がない…
+ということで以下の観点からSQLを模索してみた。
+ UnixTimeは0以下と0以上が混在する 両方変換する 書式は YYYY-MM-DD HH:mm:ss とする 必ずSQLで処理する  書けたSQL こんな感じで。
+select (case when [column] &amp;lt; 0 then DATE_FORMAT(DATE_SUB(from_unixtime(0), INTERVAL ( DATEDIFF( from_unixtime( ABS( cast(0 - cast([column] as signed) AS SIGNED) ) ), from_unixtime(0) ) ) day), &#39;%Y-%m-%d %T&#39;) when [column] &amp;gt;= 0 then from_unixtime(cast([column] as signed)) else null end) as [column] from [table];  詳細の説明を。</description>
     </item>
     
     <item>
@@ -301,45 +86,26 @@ from table;
       <pubDate>Mon, 07 Dec 2015 19:18:11 +0900</pubDate>
       
       <guid>http://sys-cat.github.io/blog/2015-12-07-githubpagewohazimetemita/</guid>
-      <description>&lt;p&gt;普段ブログをはじめてみてはすぐやめみたいなことしてたので
-いろいろ気軽に報告出来るところがなかったので簡単に場所作れて適当なこと書けるとこにしてみた。&lt;br /&gt;
-というわけでOctopressを使ってみた。&lt;/p&gt;
-
-&lt;p&gt;環境の構築がめんどいというのはあったけどやったらやったで面白みがあるので良いなぁと。&lt;br /&gt;
-転職もしたし良い機会かなとも。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;さて、ここでは以下のようなことを書くと思うよ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;技術ネタ&lt;/li&gt;
-&lt;li&gt;かなり不定期なブログ&lt;/li&gt;
-&lt;li&gt;ポエム的なこと&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;技術ネタはQiitaにも投稿はしてるけど長文になったりする場合はここが多くなるのかな。&lt;br /&gt;
-運用的なもろもろは後々考えていこうかなと思う。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;転職をして気付いたら一週間経ってしまっていた。&lt;br /&gt;
-職場は自宅から程よく近く、かつ近すぎない感じ。ドアツードアで1時間かからない位。&lt;br /&gt;
-朝のラッシュが大変だけどしばらくは朝早めに来れるように習慣づけられたらなと思ってる。&lt;/p&gt;
-
-&lt;p&gt;開発言語はPerlを利用している。&lt;br /&gt;
-正直細かいところはわからないけどPerlで数百万単位のユーザを抱えてやっていけてるのにはびっくり。&lt;br /&gt;
-細かい仕様についてはまだまだこれから学んで行くことになると思うけど癖があるツールを&lt;br /&gt;
-うまい具合にいなしつつ改善していっているみたい。凄いの一言。&lt;/p&gt;
-
-&lt;p&gt;社内の雰囲気は殺伐としておらず各々が笑うときは笑う、真剣に話すときはすごく真面目に。&lt;br /&gt;
-そういうONOFFの切り替えがしっかりしている会社さんだなぁという印象。&lt;br /&gt;
-居心地が良すぎて何年後になるか分からない転職をためらってしまうんじゃないかと今から不安だな…&lt;/p&gt;
-
-&lt;p&gt;時間的にも余裕がある会社さんなので勉強出来る環境でもある。&lt;br /&gt;
-今まであまりに時間に余裕の無い生活を送ってきたので少し精神的にも体力的にもやすませて&lt;br /&gt;
-エンジニアとしての力をつけていきたいなと思う。&lt;/p&gt;
-</description>
+      <description>普段ブログをはじめてみてはすぐやめみたいなことしてたので いろいろ気軽に報告出来るところがなかったので簡単に場所作れて適当なこと書けるとこにしてみた。
+というわけでOctopressを使ってみた。
+環境の構築がめんどいというのはあったけどやったらやったで面白みがあるので良いなぁと。
+転職もしたし良い機会かなとも。
+さて、ここでは以下のようなことを書くと思うよ。
+ 技術ネタ かなり不定期なブログ ポエム的なこと  技術ネタはQiitaにも投稿はしてるけど長文になったりする場合はここが多くなるのかな。
+運用的なもろもろは後々考えていこうかなと思う。
+転職をして気付いたら一週間経ってしまっていた。
+職場は自宅から程よく近く、かつ近すぎない感じ。ドアツードアで1時間かからない位。
+朝のラッシュが大変だけどしばらくは朝早めに来れるように習慣づけられたらなと思ってる。
+開発言語はPerlを利用している。
+正直細かいところはわからないけどPerlで数百万単位のユーザを抱えてやっていけてるのにはびっくり。
+細かい仕様についてはまだまだこれから学んで行くことになると思うけど癖があるツールを
+うまい具合にいなしつつ改善していっているみたい。凄いの一言。
+社内の雰囲気は殺伐としておらず各々が笑うときは笑う、真剣に話すときはすごく真面目に。
+そういうONOFFの切り替えがしっかりしている会社さんだなぁという印象。
+居心地が良すぎて何年後になるか分からない転職をためらってしまうんじゃないかと今から不安だな…
+時間的にも余裕がある会社さんなので勉強出来る環境でもある。
+今まであまりに時間に余裕の無い生活を送ってきたので少し精神的にも体力的にもやすませて
+エンジニアとしての力をつけていきたいなと思う。</description>
     </item>
     
   </channel>
