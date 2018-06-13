@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja-JP">
 
 <head>
 <meta charset="utf-8">
@@ -8,9 +8,51 @@
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
-<meta name="description" content="技術の情報やポエムを書いたりします。">
+<meta name="author" content="sys-cat">
+<meta name="description" content="Perlのお勉強のお話。 入社して1周間チョット経って絶賛タスクを消化しまくる日々を過ごしています。
+なんせPerl力があまりに無いのでコーディングして慣れろって話ですね。わかります。
+そんな訳でタスクを消化しているのですがPerlという言語は面白いですね。
+PHPやRubyに慣れた人間としてはPHPにも似てるしRubyにも似てるところあるなぁという認識が強いです。
+対象のシステムは非常に長く運用されたシステムで規模も数百万単位のユーザを管理するレベルでして、かれこれ10年近く運用され続けたものです。
+そんなシステムに知識0、モジュール周りの知識も皆無な僕が中身を見ると意味不明なコードがずらっと並んでるなという感覚すら出てきます。
+とりあえず sub はメソッド定義時に使う。そんなとこからのスタートだし仕方ないなぁとは思いつつ勉強の毎日。
+さて、そんな大規模な開発でログを出力したいということはまぁよくある話かなぁと思います。 PHPやRubyだとWAFに Logger クラスがあったりするのでそれ使えば良いのだけど Perlだとそれっぽいクラスが見当たらず…
+プロジェクト内で info, warn なんかを自作されてる部分があったのでそれを使えたのだけど 配列な変数の中身を出力出来ず…どうすっかなと思っていろいろとあたってみたところ…
+Dumper 使えば良いとの事。
+use strict; use warning; use Data::Dumper; ..... warn Dumper($hoge);  こんなモジュールがあるんだなぁって。。。">
 
-<base href="http://sys-cat.github.io">
+<meta property="og:title" content="Perlでデバッグしたくて苦労した話" />
+<meta property="og:description" content="Perlのお勉強のお話。 入社して1周間チョット経って絶賛タスクを消化しまくる日々を過ごしています。
+なんせPerl力があまりに無いのでコーディングして慣れろって話ですね。わかります。
+そんな訳でタスクを消化しているのですがPerlという言語は面白いですね。
+PHPやRubyに慣れた人間としてはPHPにも似てるしRubyにも似てるところあるなぁという認識が強いです。
+対象のシステムは非常に長く運用されたシステムで規模も数百万単位のユーザを管理するレベルでして、かれこれ10年近く運用され続けたものです。
+そんなシステムに知識0、モジュール周りの知識も皆無な僕が中身を見ると意味不明なコードがずらっと並んでるなという感覚すら出てきます。
+とりあえず sub はメソッド定義時に使う。そんなとこからのスタートだし仕方ないなぁとは思いつつ勉強の毎日。
+さて、そんな大規模な開発でログを出力したいということはまぁよくある話かなぁと思います。 PHPやRubyだとWAFに Logger クラスがあったりするのでそれ使えば良いのだけど Perlだとそれっぽいクラスが見当たらず…
+プロジェクト内で info, warn なんかを自作されてる部分があったのでそれを使えたのだけど 配列な変数の中身を出力出来ず…どうすっかなと思っていろいろとあたってみたところ…
+Dumper 使えば良いとの事。
+use strict; use warning; use Data::Dumper; ..... warn Dumper($hoge);  こんなモジュールがあるんだなぁって。。。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://sys-cat.github.io/blog/2015-12-10-debug-perl-object/" />
+
+
+
+<meta property="article:published_time" content="2015-12-10T18:00:00&#43;09:00"/>
+
+<meta property="article:modified_time" content="2015-12-10T18:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
 <title>
 
 
@@ -25,7 +67,7 @@
 
 
 
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
 
 
 
@@ -53,24 +95,30 @@
 
 
 
+
+
 </head>
 
 
-<body lang="">
+<body lang="ja">
 
 <section class="header">
     <div class="container">
         <div class="content">
             
-              <a href="/"><img class="avatar" src="https://gravatar.com/avatar/afbce425a7e78e7fe74aae1309c78cbe?s=50" /></a>
+            <a href="/"><img class="avatar" src="https://gravatar.com/avatar/afbce425a7e78e7fe74aae1309c78cbe?s=50" rcset="https://gravatar.com/avatar/afbce425a7e78e7fe74aae1309c78cbe?s=100 2x, https://gravatar.com/avatar/afbce425a7e78e7fe74aae1309c78cbe?s=150 3x, https://gravatar.com/avatar/afbce425a7e78e7fe74aae1309c78cbe?s=200 4x"></a>
             
-            <a href="/"><div class="name"></div></a>
+            <a href="/"><div class="name">sys-cat</div></a>
             
             <nav>
                 <ul>
-                    <li class="nav-blog"><a href="/blog/">Blog</a></li>
-                    <li class="nav-about"><a href="/about/">About</a></li>
-                    <li class="nav-code"><a href="/code/">Code</a></li>
+                    
+                        <li class="nav-"><a href="http://sys-cat.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-"><a href="http://sys-cat.github.io/about"><span>About</span></a></li>
+                    
+                        <li class="nav-"><a href="http://sys-cat.github.io/code"><span>Code</span></a></li>
+                    
                 </ul>
             </nav>
         </div>
@@ -80,25 +128,38 @@
 <section class="icons">
     <div class="container">
         <div class="content">
-
         
-            <a href="https://github.com/sys-cat" target="_blank" rel="noopener"><img class="icon" src="/img/github.svg" alt="github" /></a>
-        
-
-        
-            <a href="https://twitter.com/sys_cat" target="_blank" rel="noopener"><img class="icon" src="/img/twitter.svg" alt="twitter" /></a>
+            <a href="//github.com/sys-cat" target="_blank" rel="noopener"><img class="icon" src="/img/github.svg" alt="github" /></a>
         
 
         
 
         
+            <a href="//twitter.com/sys_cat" target="_blank" rel="noopener"><img class="icon" src="/img/twitter.svg" alt="twitter" /></a>
+        
+
+	
 
         
 
         
 
         
-            <a href="http://sys-cat.github.io/index.xml"><img class="icon" src="/img/rss.svg" alt="rss" /></a>
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:systemcat91@gmail.com"><img class="icon" src="/img/email.svg" alt="email" /></a>
+        
+
+        
+
         
         </div>
     </div>
@@ -123,7 +184,7 @@
                     <div class="date" title='Thu Dec 10 2015 18:00:00 JST'>Dec 10, 2015</div>
                     
                     
-                    <div class="reading-time"><div class="middot"></div>1 minute read</div>
+		    <div class="reading-time"><div class="middot"></div></div>
                     
                 </div>
             </div>
@@ -160,26 +221,41 @@ warn Dumper($hoge);
 
 <p>こんなモジュールがあるんだなぁって。。。</p>
                 <br>
-                <p><a href="/blog/">Back to posts</a></p>
+                
+                <p class="back-to-posts"><a href="/blog/"></a></p>
             </div>
             <br>
             <div class="disqus">
                 
             </div>
+            
         </div>
     </div>
 </section>
 
 
 
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71192655-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
   
 
   <script type="text/javascript">
     hljs.initHighlightingOnLoad();
   </script>
+
+
 
 
 
