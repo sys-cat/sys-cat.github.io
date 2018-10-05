@@ -38,6 +38,16 @@
   </url>
   
   <url>
+    <loc>http://sys-cat.github.io/tags/blog/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://sys-cat.github.io/categories/blog/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://sys-cat.github.io/blog/</loc>
     <lastmod>2018-01-17T12:30:00+09:00</lastmod>
     <priority>0</priority>
@@ -57,6 +67,10 @@
   <url>
     <loc>http://sys-cat.github.io/tags/</loc>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://sys-cat.github.io/blog/2018-10-05-mywife/</loc>
   </url>
   
 </urlset>
