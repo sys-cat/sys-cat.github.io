@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogs on System with Cat</title>
-    <link>http://sys-cat.github.io/blog/</link>
-    <description>Recent content in Blogs on System with Cat</description>
+    <title>Blog on System with Cat</title>
+    <link>http://sys-cat.github.io/categories/blog/</link>
+    <description>Recent content in Blog on System with Cat</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <lastBuildDate>Mon, 08 Apr 2019 23:00:00 +0900</lastBuildDate>
     
-	<atom:link href="http://sys-cat.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://sys-cat.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -90,92 +90,6 @@ Linuxをちゃんと勉強する インフラから逃げるな
 週末は生前妻が言っていたように残った同人誌とゲームは他の方の手に渡るよう買い取りショップにでも行ってこよう。 僕の残りの人生、何があるかは分からないけど妻が言っていた様に幸せになれれば良いなと思ってます。 正直まだ疑問が残りますけどね。
 佐々木誠
 そんな訳でご報告でした。 どうしてこんなところに残すのかと言えば。やはり記録として明確に残しておきたいと思ったからです。</description>
-    </item>
-    
-    <item>
-      <title>2年経過した</title>
-      <link>http://sys-cat.github.io/blog/2018-01-17-newyear-on-2018/</link>
-      <pubDate>Wed, 17 Jan 2018 12:30:00 +0900</pubDate>
-      
-      <guid>http://sys-cat.github.io/blog/2018-01-17-newyear-on-2018/</guid>
-      <description>&lt;p&gt;転職して2年ほど経過した。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>転職して1年経ったり入院したりした話</title>
-      <link>http://sys-cat.github.io/blog/2017-02-15-1years/</link>
-      <pubDate>Wed, 15 Feb 2017 21:59:37 +0900</pubDate>
-      
-      <guid>http://sys-cat.github.io/blog/2017-02-15-1years/</guid>
-      <description>&lt;p&gt;2015年の12月に転職してから1年と3ヶ月程経ってしまいました。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Perlでデバッグしたくて苦労した話</title>
-      <link>http://sys-cat.github.io/blog/2015-12-10-debug-perl-object/</link>
-      <pubDate>Thu, 10 Dec 2015 18:00:00 +0900</pubDate>
-      
-      <guid>http://sys-cat.github.io/blog/2015-12-10-debug-perl-object/</guid>
-      <description>Perlのお勉強のお話。 入社して1周間チョット経って絶賛タスクを消化しまくる日々を過ごしています。
-なんせPerl力があまりに無いのでコーディングして慣れろって話ですね。わかります。
-そんな訳でタスクを消化しているのですがPerlという言語は面白いですね。
-PHPやRubyに慣れた人間としてはPHPにも似てるしRubyにも似てるところあるなぁという認識が強いです。
-対象のシステムは非常に長く運用されたシステムで規模も数百万単位のユーザを管理するレベルでして、かれこれ10年近く運用され続けたものです。
-そんなシステムに知識0、モジュール周りの知識も皆無な僕が中身を見ると意味不明なコードがずらっと並んでるなという感覚すら出てきます。
-とりあえず sub はメソッド定義時に使う。そんなとこからのスタートだし仕方ないなぁとは思いつつ勉強の毎日。
-さて、そんな大規模な開発でログを出力したいということはまぁよくある話かなぁと思います。 PHPやRubyだとWAFに Logger クラスがあったりするのでそれ使えば良いのだけど Perlだとそれっぽいクラスが見当たらず…
-プロジェクト内で info, warn なんかを自作されてる部分があったのでそれを使えたのだけど 配列な変数の中身を出力出来ず…どうすっかなと思っていろいろとあたってみたところ…
-Dumper 使えば良いとの事。
-use strict; use warning; use Data::Dumper; ..... warn Dumper($hoge);  こんなモジュールがあるんだなぁって。。。</description>
-    </item>
-    
-    <item>
-      <title>MySQLでUnixTimeをTimestampに変換しようとしてつらかった話</title>
-      <link>http://sys-cat.github.io/blog/2015-12-08-myslq-from-unixtime/</link>
-      <pubDate>Wed, 09 Dec 2015 15:40:00 +0900</pubDate>
-      
-      <guid>http://sys-cat.github.io/blog/2015-12-08-myslq-from-unixtime/</guid>
-      <description>最近遭遇して大変だった話。 前提 Aから受け取ったデータをこちら側のBというDBに保存する。
-その過程で日時のデータはUnixTimeに変換して保存している。
-だいたいこんなイメージ
-   id date     1 -100000   2 1480000   3 0    問題点 問題はこれを外部に出力するときにUnixtimeを日付データに変換しないといけないということ…
-MySQLだと from_unixtime を利用することになるのだが、この関数は0未満のデータは変換出来ない仕様になっている。
-プログラムで中身を出力してEachやForeachでループさせてDateTimeモジュール的なもので書き換えてあげれば問題は無いのだけど実際はレコード数が数百万単位になるので時間がかかって仕方がない…
-ということで以下の観点からSQLを模索してみた。
- UnixTimeは0以下と0以上が混在する 両方変換する 書式は YYYY-MM-DD HH:mm:ss とする 必ずSQLで処理する  書けたSQL こんな感じで。
-select (case when [column] &amp;lt; 0 then DATE_FORMAT(DATE_SUB(from_unixtime(0), INTERVAL ( DATEDIFF( from_unixtime( ABS( cast(0 - cast([column] as signed) AS SIGNED) ) ), from_unixtime(0) ) ) day), &#39;%Y-%m-%d %T&#39;) when [column] &amp;gt;= 0 then from_unixtime(cast([column] as signed)) else null end) as [column] from [table];  詳細の説明を。</description>
-    </item>
-    
-    <item>
-      <title>GithubPage を始めました</title>
-      <link>http://sys-cat.github.io/blog/2015-12-07-githubpagewohazimetemita/</link>
-      <pubDate>Mon, 07 Dec 2015 19:18:11 +0900</pubDate>
-      
-      <guid>http://sys-cat.github.io/blog/2015-12-07-githubpagewohazimetemita/</guid>
-      <description>普段ブログをはじめてみてはすぐやめみたいなことしてたので いろいろ気軽に報告出来るところがなかったので簡単に場所作れて適当なこと書けるとこにしてみた。
-というわけでOctopressを使ってみた。
-環境の構築がめんどいというのはあったけどやったらやったで面白みがあるので良いなぁと。
-転職もしたし良い機会かなとも。
-さて、ここでは以下のようなことを書くと思うよ。
- 技術ネタ かなり不定期なブログ ポエム的なこと  技術ネタはQiitaにも投稿はしてるけど長文になったりする場合はここが多くなるのかな。
-運用的なもろもろは後々考えていこうかなと思う。
-転職をして気付いたら一週間経ってしまっていた。
-職場は自宅から程よく近く、かつ近すぎない感じ。ドアツードアで1時間かからない位。
-朝のラッシュが大変だけどしばらくは朝早めに来れるように習慣づけられたらなと思ってる。
-開発言語はPerlを利用している。
-正直細かいところはわからないけどPerlで数百万単位のユーザを抱えてやっていけてるのにはびっくり。
-細かい仕様についてはまだまだこれから学んで行くことになると思うけど癖があるツールを
-うまい具合にいなしつつ改善していっているみたい。凄いの一言。
-社内の雰囲気は殺伐としておらず各々が笑うときは笑う、真剣に話すときはすごく真面目に。
-そういうONOFFの切り替えがしっかりしている会社さんだなぁという印象。
-居心地が良すぎて何年後になるか分からない転職をためらってしまうんじゃないかと今から不安だな…
-時間的にも余裕がある会社さんなので勉強出来る環境でもある。
-今まであまりに時間に余裕の無い生活を送ってきたので少し精神的にも体力的にもやすませて
-エンジニアとしての力をつけていきたいなと思う。</description>
     </item>
     
   </channel>
