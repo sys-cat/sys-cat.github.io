@@ -30,23 +30,8 @@ MySQLだと from_unixtime を利用することになるのだが、この関数
  UnixTimeは0以下と0以上が混在する 両方変換する 書式は YYYY-MM-DD HH:mm:ss とする 必ずSQLで処理する  書けたSQL こんな感じで。
 select (case when [column] &lt; 0 then DATE_FORMAT(DATE_SUB(from_unixtime(0), INTERVAL ( DATEDIFF( from_unixtime( ABS( cast(0 - cast([column] as signed) AS SIGNED) ) ), from_unixtime(0) ) ) day), &#39;%Y-%m-%d %T&#39;) when [column] &gt;= 0 then from_unixtime(cast([column] as signed)) else null end) as [column] from [table];  詳細の説明を。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://sys-cat.github.io/blog/2015-12-08-myslq-from-unixtime/" />
-
-
-
-<meta property="article:published_time" content="2015-12-09T15:40:00&#43;09:00"/>
-
+<meta property="og:url" content="http://sys-cat.github.io/blog/2015-12-08-myslq-from-unixtime/" /><meta property="article:published_time" content="2015-12-09T15:40:00&#43;09:00"/>
 <meta property="article:modified_time" content="2015-12-09T15:40:00&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
 
 
 <title>
@@ -348,12 +333,16 @@ from table;
 
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-71192655-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71192655-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
