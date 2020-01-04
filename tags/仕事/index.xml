@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>仕事 on System with Cat</title>
+    <link>http://sys-cat.github.io/tags/%E4%BB%95%E4%BA%8B/</link>
+    <description>Recent content in 仕事 on System with Cat</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Wed, 13 Jun 2018 19:30:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://sys-cat.github.io/tags/%E4%BB%95%E4%BA%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GameWithに転職しました</title>
+      <link>http://sys-cat.github.io/blog/new_job_2018/</link>
+      <pubDate>Wed, 13 Jun 2018 19:30:00 +0900</pubDate>
+      
+      <guid>http://sys-cat.github.io/blog/new_job_2018/</guid>
+      <description>ちょっと昔の話になるのですが2018年4月20日より前職より 株式会社GameWith へ転職しました。
+いろいろと動けない事情があったりもしたのでこのタイミングですが現在も元気に（？）お仕事頑張ってます。
+前職の話 あまり人前で言うことはありませんでしたが、前職ではSNS系のWebサイトの保守運用と開発を行っていました。
+ほんの少しの間リーダーみたいなこともさせてもらいましたがまぁいろいろあり（以前のポスト参照）開発者として業務に従事しつづけておりました。
+ただ2年と少しではありましたがPerlの経験だけでなくDjangoでの開発経験や最後の方はデータ基盤の制作なんかも出来たので凄くやりがいはあったなと思っています。
+なので 色んな事はあったけど結果楽しかったかな という結論です。
+理由 なんで転職かって話なのですがいろいろ理由はありますがそのうちの一部としては自分が興味ある分野でもっと技術力を付けたいという理由からでした。
+前職では終盤、なかなかやりたいなと思っていた事が出来ず（もちろん興味ある事には手を出していましたが）
+もうちょっと好きな分野で好きな事を…といったことが出来なかったので転職も視野に入れて昨年の秋頃から少しずつ動き出して</description>
+    </item>
+    
+  </channel>
+</rss>

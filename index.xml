@@ -6,10 +6,23 @@
     <description>Recent content on System with Cat</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
-    <lastBuildDate>Tue, 30 Jul 2019 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jan 2020 21:00:00 +0900</lastBuildDate>
     
 	<atom:link href="http://sys-cat.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>振り返りと抱負</title>
+      <link>http://sys-cat.github.io/blog/2020-01-04-newyear/</link>
+      <pubDate>Sat, 04 Jan 2020 21:00:00 +0900</pubDate>
+      
+      <guid>http://sys-cat.github.io/blog/2020-01-04-newyear/</guid>
+      <description>&lt;p&gt;明けまして。&lt;/p&gt;
+
+&lt;p&gt;2019年もあっという間でしたね。2020年もよろしくお願いいたします。&lt;/p&gt;
+
+&lt;p&gt;2019年を振り返りつつ2020年の抱負を書いていこうかなと思います。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>PHPカンファレンス福岡 2019に参加した話</title>
@@ -55,6 +68,24 @@ PHPStanってあまり触れる事が無くて（基本そういうことをや�
 (なんの因果か、この後に古くなって健全ではなくなってきたコードを直すタスクを割とやっているので今では毎日考えているテーマでもあります)
 とまぁ、色々ありましたがやっぱり福岡飯がうまい。刺身醤油が甘いのは未だになれないけど（2回目）、らーめんもうまけりゃ海鮮物もうまい。 次回は食べるのをメインに来てもいいかもしれないですね。
 今年どれだけ遠征出来るかはまだ分からないですが出来るだけまわりたいなと思います。</description>
+    </item>
+    
+    <item>
+      <title>Keyboard自作はいいぞという話</title>
+      <link>http://sys-cat.github.io/blog/2019-04-21-keyboard/</link>
+      <pubDate>Sun, 21 Apr 2019 23:00:00 +0900</pubDate>
+      
+      <guid>http://sys-cat.github.io/blog/2019-04-21-keyboard/</guid>
+      <description>Keyboadって以外と重要だよね 職業プログラマでもそうでない人もプログラムを書いている人であれば割とキーボードはこだわる人が多いのではないでしょうか？
+よくある一体型のキーボードであれば - HHKB - Realforce - Filco
+分割型やエルゴノミクスタイプであれば - キネシス - Truly - バロッコ - Microsoft Natural Keyboard
+などなどがありますね。
+いっときFilcoを使ったりしていたけど結局Trulyを使ったりしていました。 ただやっぱり肩こりや腕の痛みとか辛くなってきたのもあってもっと快適なキーボード環境が必要やで！とかなんとか。
+一時期ErgoDoxとかEzとか作ったり発注しようかまよったときもありましたがタイミングが合わずになんだかんだで作らなかったな。今度作ってみるのもありかもしれないな…
+で、今どんな環境なの？   自宅の環境     職場の環境   こんな感じ。CorneCherryですね。はい、同じキーボードを持っていったりしています。職場にMint60が安置されているので、必要があればそれを使ってます。
+自宅には遊舎工房さんで作ったHelixがあったりします。赤軸で軽い！Corneの方はKailhの紫軸を使ってます
+配列の話 最初にHelixを使い始めたので最初に入門したのは格子配列です。使ってみて感じたのは「慣れが必要なんだな」って感じでした。
+その後に</description>
     </item>
     
     <item>
@@ -136,6 +167,23 @@ Linuxをちゃんと勉強する インフラから逃げるな
 週末は生前妻が言っていたように残った同人誌とゲームは他の方の手に渡るよう買い取りショップにでも行ってこよう。 僕の残りの人生、何があるかは分からないけど妻が言っていた様に幸せになれれば良いなと思ってます。 正直まだ疑問が残りますけどね。
 佐々木誠
 そんな訳でご報告でした。 どうしてこんなところに残すのかと言えば。やはり記録として明確に残しておきたいと思ったからです。</description>
+    </item>
+    
+    <item>
+      <title>GameWithに転職しました</title>
+      <link>http://sys-cat.github.io/blog/new_job_2018/</link>
+      <pubDate>Wed, 13 Jun 2018 19:30:00 +0900</pubDate>
+      
+      <guid>http://sys-cat.github.io/blog/new_job_2018/</guid>
+      <description>ちょっと昔の話になるのですが2018年4月20日より前職より 株式会社GameWith へ転職しました。
+いろいろと動けない事情があったりもしたのでこのタイミングですが現在も元気に（？）お仕事頑張ってます。
+前職の話 あまり人前で言うことはありませんでしたが、前職ではSNS系のWebサイトの保守運用と開発を行っていました。
+ほんの少しの間リーダーみたいなこともさせてもらいましたがまぁいろいろあり（以前のポスト参照）開発者として業務に従事しつづけておりました。
+ただ2年と少しではありましたがPerlの経験だけでなくDjangoでの開発経験や最後の方はデータ基盤の制作なんかも出来たので凄くやりがいはあったなと思っています。
+なので 色んな事はあったけど結果楽しかったかな という結論です。
+理由 なんで転職かって話なのですがいろいろ理由はありますがそのうちの一部としては自分が興味ある分野でもっと技術力を付けたいという理由からでした。
+前職では終盤、なかなかやりたいなと思っていた事が出来ず（もちろん興味ある事には手を出していましたが）
+もうちょっと好きな分野で好きな事を…といったことが出来なかったので転職も視野に入れて昨年の秋頃から少しずつ動き出して</description>
     </item>
     
     <item>
@@ -229,6 +277,15 @@ select (case when [column] &amp;lt; 0 then DATE_FORMAT(DATE_SUB(from_unixtime(0)
 時間的にも余裕がある会社さんなので勉強出来る環境でもある。
 今まであまりに時間に余裕の無い生活を送ってきたので少し精神的にも体力的にもやすませて
 エンジニアとしての力をつけていきたいなと思う。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://sys-cat.github.io/blog/2019-09-05-first-anniversary-of-my-wife/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://sys-cat.github.io/blog/2019-09-05-first-anniversary-of-my-wife/</guid>
+      <description></description>
     </item>
     
   </channel>
